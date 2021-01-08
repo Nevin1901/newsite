@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% extends "layout.html" %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Github</title>
+  </head>
+  <body>
+    {% block content %}
+    <div class="cards">
+      {% for repository in repositories %}
+      <div class="card github-card" style="width: 18rem">
+        <img
+          class="card-img-top"
+          src="{{ repository.imagePath }}"
+          alt="No image"
+          style="height: 180px; width: 288px"
+        />
+        <div class="card-body">
+          <p class="card-title"><strong>{{ repository.title }}</strong></p>
+          <p class="card-text">{{ repository.description }}</p>
+          <a
+            class="btn btn-primary github-button"
+            href="{{ repository.url }}"
+            target="_blank"
+            >Github</a
+          >
+          <p class="github-star">
+            <span role="img" aria-label="star-emoji">🌟</span>
+            {{ repository.stars }}
+          </p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endblock %}
+  </body>
+</html>
